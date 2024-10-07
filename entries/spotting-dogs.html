@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Spotting Dogs</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/styles.css">
+
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/dog.png">
+
+
+  
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Navigation Links</title>
+      <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet"> <!-- Link to Rammetto One Font -->
+      <style>
+          body {
+              height: 100vh;                   /* Full viewport height */
+              margin: 0;                       /* Remove default margin */
+              background-color: #DFDACF;       /* Background color */
+              display: flex;                    /* Enable flexbox */
+              flex-direction: column;           /* Stack items vertically */
+              justify-content: flex-start;      /* Align items at the top */
+              align-items: center;              /* Center items horizontally */
+              font-family: 'Helvetica', sans-serif; /* Set the font for the body */
+          }
+  
+          header {
+              display: flex;                   /* Use flexbox for header */
+              justify-content: space-between;  /* Space between nav links and actions */
+              align-items: center;             /* Center items vertically */
+              width: 100%;                     /* Full width for header */
+              padding: 20px 0;                /* Add vertical padding */
+              background-color: #F8F3E7;      /* Background color for the header box */
+              box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+              position: relative;              /* Position relative for centering */
+          }
+  
+          nav {
+              display: flex;                   /* Use flexbox for navigation */
+              gap: 20px;                      /* Add space between the links */
+              padding-left: 20px;             /* Add padding to the left */
+          }
+  
+          /* Specific styles for navigation links */
+          .nav-link {
+              color: black;                   /* Set link color to black */
+              text-decoration: none;            /* Remove underline */
+              font-size: 18px;                 /* Font size for the links */
+          }
+  
+          .baydogs {
+              font-family: 'Rammetto One', sans-serif; /* Set font for Baydogs link */
+              font-size: 36px;                  /* Font size for Baydogs link */
+              color: #47689B;                   /* Color for Baydogs */
+              margin: 0;                       /* No margin for Baydogs */
+              text-align: center;              /* Center align the Baydogs text */
+              position: absolute;              /* Position it absolutely */
+              left: 50%;                      /* Move to the center of the header */
+              transform: translateX(-50%);    /* Adjust back to truly center */
+          }
+  
+          .actions {
+              display: flex;                   /* Flexbox for Get Started and Sign In */
+              gap: 20px;                      /* Add space between the buttons */
+              margin-right: 20px;             /* Add margin to the right */
+              align-items: center;             /* Center items vertically within the actions */
+          }
+  
+          .get-started {
+              background-color: #3A2323;      /* Background color for the box */
+              color: white;                   /* Text color for the link */
+              padding: 10px 25px;             /* Padding inside the box */
+              border-radius: 30px;             /* Rounded corners */
+              text-decoration: none;           /* Remove underline from Get Started */
+          }
+  
+          .sign-in {
+              color: black;                   /* Set color for Sign In link */
+              text-decoration: none;            /* Remove underline */
+              font-size: 18px;                 /* Font size for the Sign In link */
+          }
+  
+          .discover {
+              display: flex;                  /* Use flexbox for the discover section */
+              align-items: center;            /* Center items vertically */
+              margin-top: 100px;              /* Add some margin above */
+          }
+  
+          .discover p {
+              font-size: 60px;                /* Set the desired font size for the text */
+              margin: 0;                      /* Remove default margin */
+          }
+  
+          .discover img {
+              width: 400px;                   /* Set image width to make it bigger */
+              height: auto;                   /* Maintain aspect ratio */
+              margin-left: 600px;              /* Space between text and image */
+              margin-bottom: 10px;            /* Add margin to the bottom */
+          }
+  
+          /* New section for left-aligned text */
+          .left-section {
+              position: absolute;              /* Position it absolutely */
+              top: 300px;                     /* Adjust the top positioning */
+              left: 260px;                     /* Position it on the left side */
+              display: flex;                  /* Flexbox to align items */
+              flex-direction: column;         /* Stack items vertically */
+              gap: 10px;                      /* Add spacing between lines */
+              text-align: left;               /* Align text to the left */
+          }
+  
+          .left-section p {
+              font-size: 48px;                /* Font size for the text */
+              margin: 0;                      /* Remove default margin */
+          }
+      </style>
+  </head>
+  <body>
+      <header>
+          <nav>
+              <a href="#" class="nav-link home">Home</a> 
+              <a href="#" class="nav-link">About</a>
+              <a href="#" class="nav-link">Explore</a>
+          </nav>
+          <h1 class="baydogs">Baydogs</h1> <!-- Baydogs link with custom font -->
+          <div class="actions">
+              <a href="#" class="get-started">Get Started</a> <!-- Added class for the box -->
+              <a href="#" class="sign-in">Sign In</a> <!-- Set Sign In link color to black -->
+          </div>
+      </header>
+  
+      <!-- Left-aligned text section -->
+      <div class="left-section">
+          <p>Discover</p>
+          <p>in your</p>
+          <p>community</p>
+      </div>
+  
+      <div class="left-section">
+        <p>Discover <strong>dogs</strong></p> <!-- "dogs" is now bold -->
+        <p>in your</p>
+        <p>community</p>
+    </div>
+
+  
+      <!-- Discover section -->
+      <div class="discover">
+          <img src="/Users/aileen.son.23/Desktop/year 2/core-1-harmonic-collection/hc-framework-main/images/dog.png" alt="Dog Image"> <!-- Replace with your image path -->
+      </div>
+  </body>
+  </html>
+  
+
+  
+
+  
+</head>
+<main class="main-grid">
+
+    <div class="div1"> </div>
+    <div class="div2"> </div>
+    <div class="div3"> </div>
+    <div class="div4"> </div>
+    <div class="div5"> </div>
+    <div class="div6"> </div>
+    <div class="div7"> </div>
+
+</main>
+         
+
+
+
+</body>
+</html>
