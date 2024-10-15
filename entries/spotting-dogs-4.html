@@ -1,102 +1,84 @@
- <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta charset="utf-8">
-  <title>Baydogs 3</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
-  
-  
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Navigation Links</title>
-      <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet"> 
-      <style>
-          body {
-              height: 100vh;                   
-              margin: 0;                       
-              background-color: #DFDACF;       
-              display: flex;                    
-              flex-direction: column;           
-              justify-content: flex-start;      
-              align-items: center;              
-              font-family: 'Helvetica', sans-serif; 
-          }
-  
-          header {
-              display: flex;                  
-              justify-content: space-between;   
-              align-items: center;              
-              width: 100%;                    
-              padding: 20px 0;                
-              background-color: #F8F3E7;       
-              box-shadow: 0 4px 8px rgba(0,0,0,0.1);  
-              position: relative;             
-          }
-  
-          nav {
-              display: flex;                   
-              gap: 20px;                      
-              padding-left: 20px;             
-          }
-  
-          /* Specific styles for navigation links */
-          .nav-link {
-              color: black;                   
-              text-decoration: none;           
-              font-size: 18px;                 
-          }
-  
-          .baydogs {
-              font-family: 'Rammetto One', sans-serif; 
-              font-size: 36px;                  
-              color: #47689B;                   
-              margin: 0;                       
-              text-align: center;              
-              position: absolute;              
-              left: 50%;                     
-              transform: translateX(-50%);    
-          }
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baydogs 3</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet"> 
+    
     <style>
         body {
-            background-color: #F8F3E7;
+            height: 100vh;
+            margin: 0;
+            background-color: #DFDACF;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
             font-family: 'Helvetica', sans-serif;
         }
-           </style>
 
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map</title>
-    <style>
-        body {
-            background-color: #F8F3E7;
+        header {
             display: flex;
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 20px 0;
+            background-color: #F8F3E7;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            padding-left: 20px;
+        }
+
+        .nav-link {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .baydogs {
+            font-family: 'Rammetto One', sans-serif;
+            font-size: 36px;
+            color: #47689B;
             margin: 0;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         iframe {
-            width: 600px; 
-            height: 450px; 
+            width: 600px;
+            height: 450px;
             border: 0;
+        }
+
+        .map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">Contact</a>
+        </nav>
+        <h1 class="baydogs">Baydogs 3</h1>
+    </header>
 
-    <!-- Google Map Embed -->
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.4092147554066!2d-73.9806175247712!3d40.74135207932819!2m3!1f0!2f0!3
+    <div class="map-container">
+        <!-- Google Map Embed -->
+        <iframe 
+            src="https://www.google.com/maps/place/Kips+Bay+Court/@40.741352,-73.9806175,16z/data=!3m1!4b1!4m6!3m5!1s0x89c2590924614443:0xd3aaceaa71b44bee!8m2!3d40.741352!4d-73.9780426!16s%2Fg%2F1tfjm0tt?entry=ttu&g_ep=EgoyMDI0MTAwOS4wIKXMDSoASAFQAw%3D%3D"
