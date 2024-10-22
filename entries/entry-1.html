@@ -15,27 +15,16 @@
             align-items: center;
             height: 100vh;
             text-align: center;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 800px;
-            margin: auto;
+            position: relative; 
         }
 
         .back-button {
-            background-color: #4b2c20;
-            color: white;
-            border: none;
-            font-size: 36px;
-            padding: 10px;
-            margin-bottom: 20px;
-            cursor: pointer;
-            border-radius: 10px;
+            background-color: transparent; 
+            border: none; 
+            position: absolute; 
+            top: 10px; 
+            left: 10px; 
+            cursor: pointer; 
         }
 
         .image-box {
@@ -48,7 +37,6 @@
             align-items: center;
             margin: 20px 0;
             border-radius: 10px;
-            position: relative;
         }
 
         #image-upload {
@@ -105,7 +93,7 @@
 <body>
     <div class="container">
         <!-- Back button -->
-        <button class="back-button">&larr; Back</button>
+        <button class="back-button" onclick="window.history.back()"></button>
 
         <div class="image-box">
             <img src="https://via.placeholder.com/50" alt="Upload Image" class="image-placeholder" id="uploaded-image">
@@ -119,6 +107,10 @@
             <button>Coat type</button>
             <button>Personality</button>
         </div>
+    </div>
+</body>
+</html>
+
 
 <div class="map-box">
     <a href="https://www.google.com/maps" target="_blank">Go to Google Maps</a>
