@@ -27,8 +27,6 @@
             margin: auto;
         }
 
-
-
         .image-box {
             background-color: #d3d3d3;
             width: 100%;
@@ -57,8 +55,8 @@
 
         .buttons {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column; 
+            align-items: center; 
             gap: 15px;
             margin-bottom: 40px;
         }
@@ -72,6 +70,8 @@
             cursor: pointer;
             font-size: 20px;
             transition: transform 0.2s;
+            width: 100%; 
+            max-width: 200px; 
         }
 
         .buttons button:hover {
@@ -92,8 +92,7 @@
             border: none;
         }
 
-        
-       </style>
+    </style>
 </head>
 <body>
     <header>
@@ -102,11 +101,10 @@
                 <!-- Using a Unicode arrow symbol for back -->
                 &#8592;
             </a>
+        </nav>
     </header>
-</body>
-</html>
 
-
+    <div class="container">
         <div class="image-box">
             <img src="https://via.placeholder.com/50" alt="Upload Image" class="image-placeholder" id="uploaded-image">
             <input type="file" id="image-upload" accept="image/*">
@@ -120,6 +118,9 @@
             <button>Personality</button>
         </div>
 
-<div class="map-box">
-    <a href="https://www.google.com/maps" target="_blank">Go to Google Maps</a>
-</div>
+        <div class="map-box">
+            <a href="https://www.google.com/maps" target="_blank">Go to Google Maps</a>
+        </div>
+    </div>
+</body>
+</html>
