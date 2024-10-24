@@ -84,15 +84,46 @@
 
     
    <div class="form-container">
-    <form action="spotting-dogs-entries.html" method="GET">
+    <form>
         <input type="text" placeholder="Username" required>
         <input type="email" placeholder="Email Address" required>
-        <input type="text" placeholder="Address" required>
+        <input type="text" id="address" placeholder="Address" required>
         <input type="password" placeholder="Password" required>
-        <button type="submit">Submit</button>
+        <button type="button" onclick="geocodeAddress()">Submit</button>
     </form>
 </div>
 
+<div id="map" style="width: 600px; height: 450px;"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+<script>
+  function initMap() {
+    // Initialize the map centered at a default location
+    window.map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: 40.7128, lng: -74.0060 },  // Default to NYC
+      zoom: 10
+    });
+
+    window.geocoder = new google.maps.Geocoder();
+  }
+
+  function geocodeAddress() {
+    const address = document.getElementById('address').value;
+
+    window.geocoder.geocode({ 'address': address }, function(results, status) {
+      if (status === 'OK') {
+        window.map.setCenter(results[0].geometry.location);
+        new google.maps.Marker({
+          map: window.map,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful: ' + status);
+      }
+    });
+  }
+</script>
 
 
  
