@@ -68,60 +68,54 @@
  
   
   </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baydogs Map</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            background-color: #DFDACF;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            font-family: 'Helvetica', sans-serif;
+        }
+        .form-container {
+            margin: 20px;
+        }
+        #map {
+            width: 600px;
+            height: 450px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-         <a href="spotting-dogs-home.html" style="color: black; text-decoration: none; font-size: 18px;">About</a>
-         <a href="spotting-dogs-4.html" style="color: black; text-decoration: none; font-size: 18px;">Explore</a> 
-        </nav>
-        <h1 class="baydogs">Baydogs</h1>
-        <div class="actions">
-        </div>
-    </header>
 
+    <div class="form-container">
+        <form onsubmit="openMap(event)">
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="text" id="address" placeholder="Address" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="map"></div>
+
+    <script>
+        function openMap(event) {
+            event.preventDefault(); // Prevent form submission
+            const address = document.getElementById('address').value;
+            const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+            window.open(mapUrl, '_blank'); // Open the map in a new tab
+        }
+    </script>
     
-
-    
-   <div class="form-container">
-    <form>
-        <input type="text" placeholder="Username" required>
-        <input type="email" placeholder="Email Address" required>
-        <input type="text" id="address" placeholder="Address" required>
-        <input type="password" placeholder="Password" required>
-        <button type="button" onclick="geocodeAddress()">Submit</button>
-    </form>
-</div>
-
-<div id="map" style="width: 600px; height: 450px;"></div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-
-<script>
-  function initMap() {
-    // Initialize the map centered at a default location
-    window.map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: 40.7128, lng: -74.0060 },  // Default to NYC
-      zoom: 10
-    });
-
-    window.geocoder = new google.maps.Geocoder();
-  }
-
-  function geocodeAddress() {
-    const address = document.getElementById('address').value;
-
-    window.geocoder.geocode({ 'address': address }, function(results, status) {
-      if (status === 'OK') {
-        window.map.setCenter(results[0].geometry.location);
-        new google.maps.Marker({
-          map: window.map,
-          position: results[0].geometry.location
-        });
-      } else {
-        alert('Geocode was not successful: ' + status);
-      }
-    });
-  }
-</script>
-
+</body>
+</html>
