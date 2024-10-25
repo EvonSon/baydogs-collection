@@ -60,47 +60,59 @@
 
 <header>
     <nav>
-        <a href="spotting-dogs-home.html" class="nav-link">About</a>
-        <a href="spotting-dogs-4.html" class="nav-link">Explore</a>
+        <a href="spotting-dogs-home.html" class="nav-link">Home</a>
+        <a href="spotting-dogs-explore.html" class="nav-link">Explore</a>
     </nav>
     <h1 class="baydogs">Baydogs</h1>
 </header>
 
 <div class="form-container">
-    <form>
-        <input type="text" id="address" placeholder="Your Address" required>
-        <button type="button" onclick="geocodeAddress()">Submit</button>
-    </form>
+    <input type="text" id="location" placeholder="Enter a location" />
+    <button id="submit">Submit</button>
 </div>
 
 <div id="map"></div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
 <script>
+    let map;
+    let markers = [];
+
     function initMap() {
-        // Initialize the map centered at a default location (New York City in this case)
-        window.map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: 40.7128, lng: -74.0060 },  // NYC as default center
-            zoom: 10
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: -34.397, lng: 150.644 }, // Set your default center
+            zoom: 8,
         });
 
-        window.geocoder = new google.maps.Geocoder();
+        document.getElementById("submit").addEventListener("click", function() {
+            const locationInput = document.getElementById("location").value;
+            geocodeLocation(locationInput);
+        });
     }
 
-    function geocodeAddress() {
-        const address = document.getElementById('address').value;
+    function geocodeLocation(location) {
+        const geocoder = new google.maps.Geocoder();
 
-        window.geocoder.geocode({ 'address': address }, function(results, status) {
-            if (status === 'OK') {
-                window.map.setCenter(results[0].geometry.location);
-                new google.maps.Marker({
-                    map: window.map,
-                    position: results[0].geometry.location
-                });
-         
+        geocoder.geocode({ address: location }, (results, status) => {
+            if (status === "OK") {
+                const position = results[0].geometry.location;
+                addMarker(position);
+                map.setCenter(position);
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+    }
+
+    function addMarker(location) {
+        const marker = new google.maps.Marker({
+            position: location,
+            map: map,
+        });
+        markers.push(marker);
     }
 </script>
 
 </body>
 </html>
+
