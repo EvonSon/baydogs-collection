@@ -53,6 +53,7 @@
             width: 600px;
             height: 450px;
             border: 1px solid #ccc;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -75,30 +76,41 @@
 
 <div id="map"></div>
 
+<!-- Google Maps API script with your actual API key -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 
 <script>
+    let map;
+    let geocoder;
+
     function initMap() {
-        // Initialize the map centered at a default location (New York City in this case)
-        window.map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: 40.7128, lng: -74.0060 },  // NYC as default center
+        // Initialize the map centered at New York City as default
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 40.7128, lng: -74.0060 },
             zoom: 10
         });
 
-        window.geocoder = new google.maps.Geocoder();
+        geocoder = new google.maps.Geocoder();
     }
 
     function geocodeAddress() {
         const address = document.getElementById('address').value;
 
-        window.geocoder.geocode({ 'address': address }, function(results, status) {
+        geocoder.geocode({ 'address': address }, function(results, status) {
             if (status === 'OK') {
-                window.map.setCenter(results[0].geometry.location);
+                map.setCenter(results[0].geometry.location);
                 new google.maps.Marker({
-                    map: window.map,
+                    map: map,
                     position: results[0].geometry.location
                 });
-         
+                // Redirect to the "Explore" page after the map shows the location
+                setTimeout(function() {
+                    window.location.href = "spotting-dogs-4.html";
+                }, 2000); // Delay the redirect by 2 seconds for better user experience
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
     }
 </script>
 
