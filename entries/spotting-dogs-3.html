@@ -48,12 +48,8 @@
         }
         .form-container {
             margin: 20px;
-        }
-        #map {
-            width: 600px;
-            height: 450px;
-            border: 1px solid #ccc;
-        }
+        
+      
     </style>
 </head>
 <body>
@@ -73,35 +69,4 @@
     </form>
 </div>
 
-<div id="map"></div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-
-<script>
-    function initMap() {
-        // Initialize the map centered at a default location (New York City in this case)
-        window.map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: 40.7128, lng: -74.0060 },  // NYC as default center
-            zoom: 10
-        });
-
-        window.geocoder = new google.maps.Geocoder();
-    }
-
-    function geocodeAddress() {
-        const address = document.getElementById('address').value;
-
-        window.geocoder.geocode({ 'address': address }, function(results, status) {
-            if (status === 'OK') {
-                window.map.setCenter(results[0].geometry.location);
-                new google.maps.Marker({
-                    map: window.map,
-                    position: results[0].geometry.location
-                });
-         
-    }
-</script>
-
-</body>
-</html>
 
