@@ -9,23 +9,39 @@
         body {
             margin: 0;
             background-color: #DFDACF;
+            font-family: Helvetica, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: Helvetica, sans-serif;
         }
         header {
             width: 100%;
             background-color: #F8F3E7;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             padding: 20px;
-            text-align: center;
+            box-sizing: border-box;
         }
         .baydogs {
             font-family: 'Rammetto One', sans-serif;
             font-size: 36px;
             color: #47689B;
             margin: 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-link {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .form-container {
+            margin-top: 20px;
         }
         #map {
             width: 600px;
@@ -38,10 +54,14 @@
 <body>
 
 <header>
+    <nav>
+        <a href="spotting-dogs-home.html" class="nav-link">About</a>
+        <a href="spotting-dogs-4.html" class="nav-link">Explore</a>
+    </nav>
     <h1 class="baydogs">Baydogs</h1>
 </header>
 
-<div>
+<div class="form-container">
     <input type="text" id="address" placeholder="Enter address" required>
     <button onclick="geocodeAddress()">Show on Map</button>
 </div>
@@ -52,8 +72,9 @@
 
 <script>
     function initMap() {
+        // Initialize the map centered at a default location (New York City in this case)
         window.map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: 40.7128, lng: -74.0060 },
+            center: { lat: 40.7128, lng: -74.0060 },  // Default center is NYC
             zoom: 10
         });
         window.geocoder = new google.maps.Geocoder();
@@ -77,3 +98,4 @@
 
 </body>
 </html>
+
