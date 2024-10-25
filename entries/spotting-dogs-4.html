@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baydogs 3</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
+    <title>Baydogs</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet"> 
+    
     <style>
         body {
             height: 100vh;
@@ -16,6 +19,7 @@
             align-items: center;
             font-family: 'Helvetica', sans-serif;
         }
+
         header {
             display: flex;
             justify-content: space-between;
@@ -23,19 +27,22 @@
             width: 100%;
             padding: 20px 0;
             background-color: #F8F3E7;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
         }
+
         nav {
             display: flex;
             gap: 20px;
             padding-left: 20px;
         }
+
         .nav-link {
             color: black;
             text-decoration: none;
             font-size: 18px;
         }
+
         .baydogs {
             font-family: 'Rammetto One', sans-serif;
             font-size: 36px;
@@ -46,73 +53,79 @@
             left: 50%;
             transform: translateX(-50%);
         }
-        .form-container {
-            margin: 20px;
+
+        .map-container {
+            display: flex;
+            justify-content: flex-start; 
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            padding: 20px;
         }
-        #map {
+
+        iframe {
             width: 600px;
             height: 450px;
-            border: 1px solid #ccc;
+            border: 0;
+        }
+
+        .link-container {
+            width: 600px; 
+            height: 450px; 
+            margin-left: 20px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F8F3E7; 
+            border: 1px solid #ccc; 
+        }
+
+        .external-link {
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+            font-size: 24px;
+            background-color: #FFF; 
+            border-radius: 5px; 
+            transition: background-color 0.3s;
+        }
+
+        .external-link:hover {
+            background-color: #DFDACF; 
         }
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="spotting-dogs-3.html" class="nav-link" style="text-decoration: none; font-size: 18px;">
+                &#8592;
+            </a>
+        </nav>
+        <h1 class="baydogs">Baydogs</h1>
+    </header>
 
-<header>
-    <nav>
-        <a href="spotting-dogs-home.html" class="nav-link">Home</a>
-        <a href="spotting-dogs-explore.html" class="nav-link">Explore</a>
-    </nav>
-    <h1 class="baydogs">Baydogs</h1>
-</header>
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.4092147554066!2d-73.9806175247712!3d40.74135207932819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2590924614443%3A0xd3aaceaa71b44bee!2sKips%20Bay%20Court!5e0!3m2!1sen!2sus!4v1697012308433!5m2!1sen!2sus" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
 
-<div class="form-container">
-    <input type="text" id="location" placeholder="Enter a location" />
-    <button id="submit">Submit</button>
-</div>
-
-<div id="map"></div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
-<script>
-    let map;
-    let markers = [];
-
-    function initMap() {
-        map = new google.maps.Map(document.getElementById("map"), {
-            center: { lat: -34.397, lng: 150.644 }, // Set your default center
-            zoom: 8,
-        });
-
-        document.getElementById("submit").addEventListener("click", function() {
-            const locationInput = document.getElementById("location").value;
-            geocodeLocation(locationInput);
-        });
-    }
-
-    function geocodeLocation(location) {
-        const geocoder = new google.maps.Geocoder();
-
-        geocoder.geocode({ address: location }, (results, status) => {
-            if (status === "OK") {
-                const position = results[0].geometry.location;
-                addMarker(position);
-                map.setCenter(position);
-            } else {
-                alert("Geocode was not successful for the following reason: " + status);
-            }
-        });
-    }
-
-    function addMarker(location) {
-        const marker = new google.maps.Marker({
-            position: location,
-            map: map,
-        });
-        markers.push(marker);
-    }
-</script>
-
+        <div class="link-container">
+            <a href="https://www.kipsbaycourt.com/pet-friendly-living/">
+                Visit Kips Bay Court
+            </a>
+        </div>
+    </div>
 </body>
 </html>
 
