@@ -4,106 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dog Info Page</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f9f4e8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .image-box {
-            background-color: #d3d3d3;
-            width: 100%;
-            max-width: 500px;
-            height: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-            border-radius: 10px;
-            position: relative;
-        }
-
-        #image-upload {
-            position: absolute;
-            opacity: 0;
-            height: 100%;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        .image-placeholder {
-            width: 50px;
-            height: 50px;
-        }
-
-         <style>
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 10px; 
-            justify-items: center; 
-            margin-top: 20px;
-        }
-
-        .buttons button {
-            background-color: #4b2c20;
-            color: white;
-            border: none;
-            padding: 13px 33px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: transform 0.2s;
-            width: 100%; 
-            max-width: 190px; 
-        }
-
-        .buttons button:hover {
-            transform: scale(1.05);
-        }
-
-        .buttons button:nth-child(4),
-        .buttons button:nth-child(5) {
-            grid-column: span 2; 
-        }
-
-        .map-box {
-            width: 100%;
-            max-width: 600px;
-            height: 400px;
-            background-color: #a2c08a;
-            margin-top: 30px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-  </style>
 </head>
 <body>
     <header style="position: absolute; top: 10px; left: 20px;">
         <nav>
             <a href="spotting-dogs-entries.html" class="nav-link" style="text-decoration: none; font-size: 18px;">
-                <!-- Using a Unicode arrow symbol for back -->
                 &#8592;
             </a>
         </nav>
@@ -111,7 +16,7 @@
 
     <div class="container">
         <div class="image-box">
-            <img src="https://via.placeholder.com/50" alt="Upload Image" class="image-placeholder" id="uploaded-image">
+            <img src="images/entry1.jpg" alt="Entry 1 Image" class="image-placeholder" id="uploaded-image">
             <input type="file" id="image-upload" accept="image/*">
         </div>
 
@@ -129,3 +34,4 @@
     </div>
 </body>
 </html>
+
