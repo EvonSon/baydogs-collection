@@ -12,8 +12,8 @@
             background-color: #DFDACF;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
+            justify-content: center; 
+            align-items: center; 
             font-family: 'Helvetica', sans-serif;
         }
         header {
@@ -48,8 +48,30 @@
         }
         .form-container {
             margin: 20px;
-        
-      
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px 0; 
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 250px; 
+        }
+        button {
+            background-color: #4b2c20;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button-container {
+            margin: 20px;
+            display: flex;
+            justify-content: center; 
+        }
     </style>
 </head>
 <body>
@@ -69,14 +91,14 @@
     </form>
 </div>
 
-    <div style="margin: 20px;">
+<div class="button-container">
     <a href="spotting-dogs-entries.html" style="text-decoration: none;">
-        <button style="background-color: #4b2c20; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+        <button>
             See Dogs Near You
         </button>
     </a>
 </div>
 
-
-
+</body>
+</html>
 
