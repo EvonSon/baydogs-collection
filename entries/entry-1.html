@@ -31,7 +31,7 @@
             background-color: #d3d3d3;
             width: 100%;
             max-width: 500px;
-            height: auto; /* Changed to auto for responsiveness */
+            height: auto;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -43,14 +43,15 @@
         .map-box {
             width: 100%;
             max-width: 600px;
-            height: 400px;
             margin-top: 30px;
         }
 
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        .map-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff; /* Bootstrap primary color for links */
+            font-weight: bold;
         }
     </style>
 </head>
@@ -65,8 +66,7 @@
 
     <div class="container">
         <div class="image-box">
-            <img src="../images/place it here later.png" alt="I will take photos of dogs and place it here later
-" class="image-placeholder" style="max-width: 100%; height: auto;">
+            <img src="../images/place it here later.png" alt="I will take photos of dogs and place it here later" class="image-placeholder" style="max-width: 100%; height: auto;">
         </div>
 
         <div class="buttons">
@@ -78,18 +78,11 @@
         </div>
 
         <div class="map-box">
-            <iframe 
-                src="https://www.google.com/maps/dir/?entry=wc" 
-                width="600" 
-                height="450" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
             <p>
-                <a href="https://www.google.com/maps/dir/?entry=wc" target="_blank">Go to Avenue Design Group on Google Maps</a>
+                <a href="https://www.google.com/maps/place/Kips+Bay,+New+York,+NY/@40.740646,-73.9833739,16z/data=!3m1!4b1!4m6!3m5!1s0x89c2590912c9c1d5:0x74be4b608f3aa35e!8m2!3d40.7423292!4d-73.9800645!16zL20vMDNoYnN0?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-link">View Kips Bay on Google Maps</a>
             </p>
         </div>
     </div>
 </body>
 </html>
+
