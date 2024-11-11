@@ -5,11 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BayDogs Collection</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+            background-color: #DFDACF; 
+            height: 100vh; 
+        }
+        .entries {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px; 
+            width: 100%;  
+            max-width: 1200px; 
+            padding: 20px; 
+        }
+        .entry {
+            background-color: #F8F3E7; 
+            border: 1px solid #47689B; 
+            border-radius: 8px; 
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            height: 150px; 
+            text-align: center;
+            font-family: 'Helvetica', sans-serif; 
+            color: black;
+            padding: 10px; 
+        }
+        .entry img {
+            max-width: 100%;  
+            height: auto; 
+            object-fit: contain;  
+        }
+        .entry a {
+            margin-top: 10px; 
+            color: #47689B; 
+            text-decoration: none; 
+        }
+    </style>
 </head>
 <body>
     <div class="entries">
         <div class="entry">
-            <img src="../images/entry1.png" alt="Dog photo at 512 2nd Ave" width="100%" height="100%">
+            <img src="../images/entry1.png" alt="Dog photo at 512 2nd Ave">
             <a href="entry-1.html" target="_blank">512 2nd Ave, New York, NY 10016</a>
         </div>
         <div class="entry">
