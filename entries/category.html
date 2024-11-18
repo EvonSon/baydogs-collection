@@ -106,42 +106,84 @@ nav {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paw Shapes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
+    <title>Dog Paw</title>
     <style>
         body {
-            height: 100vh;
             margin: 0;
-            background-color: #DFDACF;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Rammetto One', sans-serif;
-        }
-
-        .paw-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
+            height: 100vh;
+            background-color: #DFDACF;
         }
 
         .paw {
+            position: relative;
             width: 100px;
             height: 100px;
             background-color: #47689B;
-            clip-path: polygon(50% 0%, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0% 50%, 35% 35%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 16px;
-            text-align: center;
-            font-weight: bold;
+            border-radius: 50%;
+        }
+
+        .pad {
+            position: absolute;
+            background-color: #47689B;
+            border-radius: 50%;
+        }
+
+        .top-left {
+            width: 30px;
+            height: 30px;
+            top: 10px;
+            left: 10px;
+        }
+
+        .top-right {
+            width: 30px;
+            height: 30px;
+            top: 10px;
+            right: 10px;
+        }
+
+        .bottom-left {
+            width: 40px;
+            height: 40px;
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .bottom-right {
+            width: 40px;
+            height: 40px;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .main-pad {
+            position: absolute;
+            width: 50px;
+            height: 60px;
+            background-color: #47689B;
+            border-radius: 25px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
     </style>
 </head>
 <body>
+    <div class="paw">
+        <div class="pad top-left"></div>
+        <div class="pad top-right"></div>
+        <div class="pad bottom-left"></div>
+        <div class="pad bottom-right"></div>
+        <div class="main-pad"></div>
+    </div>
+</body>
+</html>
+
+  
 
 <div class="paw-container">
     <div class="paw">Breed</div>
