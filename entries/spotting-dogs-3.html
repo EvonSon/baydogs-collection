@@ -3,32 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage | Baydogs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
+    <title>Find Dogs Near You</title>
+
+    <!-- Link to Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+    <!-- Link to Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
     <style>
+        /* General body styling */
         body {
-            height: 100vh;
             margin: 0;
-            background-color: #DFDACF;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            height: 100vh; /* Full viewport height */
+            background-color: #DFDACF;
             font-family: 'Helvetica', sans-serif;
             letter-spacing: 1px;
         }
+
         header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            width: 100%;
             padding: 20px 0;
             background-color: #F8F3E7;
+            position: relative;
         }
+
         nav {
-            position: absolute;
-            left: 20px;
             display: flex;
             gap: 20px;
+            padding-left: 20px;
         }
+
         .nav-link {
             color: black;
             text-decoration: none;
@@ -40,28 +51,42 @@
             color: #47689B;
             margin: 0;
             text-align: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
-        input[type="text"], button {
-            margin: 10px;
+
+        #map {
+            flex-grow: 1; /* Map takes up all remaining space */
+            width: 100%; /* Full width of the container */
+        }
+
+        /* Input and button styling */
+        .form-container {
             padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F8F3E7;
         }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-right: 10px; 
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 250px;
+        }
+
         button {
             background-color: #4b2c20;
             color: white;
             border: none;
+            padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
         }
-        #map {
-            flex-grow: 1;
-            width: 100%;
-            height: calc(100vh - 140px); /* Adjust map height relative to header */
-        }
     </style>
-    <!-- Leaflet Map CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <!-- Leaflet Map JS -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
     <header>
@@ -74,8 +99,12 @@
             <a href="../index.html" style="text-decoration: none; color: #47689B;">Baydogs</a>
         </h1>
     </header>
-    <input type="text" id="address" placeholder="Enter your address">
-    <button onclick="geocodeAddress()">See Dogs Near You</button>
+
+    <div class="form-container">
+        <input type="text" id="address" placeholder="Enter your address">
+        <button onclick="geocodeAddress()">See Dogs Near You</button>
+    </div>
+
     <div id="map"></div>
 
     <script>
@@ -126,4 +155,3 @@
     </script>
 </body>
 </html>
-
