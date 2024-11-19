@@ -115,26 +115,44 @@
 </html>
 
 
-<script>
-    function geocodeAddress() {
-        var address = document.getElementById('address').value;
-        var geocoder = new google.maps.Geocoder();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+</head>
+<body>
+    <h1>Find Dogs Near You</h1>
+    <input type="text" id="address" placeholder="Enter your address">
+    <button id="submit-location" onclick="geocodeAddress()">See Dogs Near You</button>
 
-        geocoder.geocode({ 'address': address }, function(results, status) {
-            if (status == 'OK') {
-                var userLat = results[0].geometry.location.lat();
-                var userLng = results[0].geometry.location.lng();
-                
-                // Store the user's coordinates in sessionStorage
-                sessionStorage.setItem('userLat', userLat);
-                sessionStorage.setItem('userLng', userLng);
+    <script>
+        function geocodeAddress() {
+            var address = document.getElementById('address').value;
+            var geocoder = new google.maps.Geocoder();
 
-                // Redirect to the dog entries page
-                window.location.href = 'spotting-dogs-entries.html';
-            } else {
-                alert("Geocode was not successful for the following reason: " + status);
-            }
-        });
-    }
-</script>
+            geocoder.geocode({ 'address': address }, function(results, status) {
+                if (status == 'OK') {
+                    var userLat = results[0].geometry.location.lat();
+                    var userLng = results[0].geometry.location.lng();
+
+                    // Store the user's coordinates in sessionStorage
+                    sessionStorage.setItem('userLat', userLat);
+                    sessionStorage.setItem('userLng', userLng);
+
+                    // Debugging: Print coordinates to console
+                    console.log("User Lat: " + userLat + ", User Lng: " + userLng);
+
+                    // Redirect to the dog entries page
+                    window.location.href = 'spotting-dogs-entries.html';
+                } else {
+                    alert("Geocode was not successful for the following reason: " + status);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
 
