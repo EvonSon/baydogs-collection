@@ -149,8 +149,11 @@
                         .bindPopup("You are here!")
                         .openPopup();
 
-                    // Redirect to the dog entries page
-                    window.location.href = 'spotting-dogs-entries.html';
+                    // Set a slight delay before redirecting to ensure everything is loaded
+                    setTimeout(function() {
+                        // Redirect to the dog entries page after a brief pause
+                        window.location.href = 'spotting-dogs-entries.html';
+                    }, 1000); // 1 second delay
                 } else {
                     alert("Could not find the address. Please try again.");
                 }
@@ -164,4 +167,5 @@
     </script>
 </body>
 </html>
+
 
