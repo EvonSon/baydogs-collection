@@ -1,118 +1,161 @@
+home
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>About | Baydogs</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSS -->
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="../css/normalize.css">
   <link rel="stylesheet" href="../css/styles.css">
 
-  <!-- Favicon -->
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/dog.png"> 
 
-  <style>
-    /* Body reset to prevent any unwanted margins or borders */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #DFDACF;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      font-family: 'Helvetica', sans-serif;
-      height: 100vh;
-    }
 
-    /* Navigation Styles */
-    nav {
-      display: flex;
-      gap: 20px;
-      padding-left: 20px;
-    }
+  
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Navigation Links</title>
+      <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet"> 
+     <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            background-color: #DFDACF;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            font-family: 'Helvetica', sans-serif;
+        }
 
-    .nav-link {
-      color: black;
-      text-decoration: none;
-      font-size: 18px;
-    }
+    
 
-    /* Left Section Styles */
-    .left-section {
-      position: absolute;
-      top: 300px;
-      left: 260px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      text-align: left;
-    }
+        nav {
+            display: flex;
+            gap: 20px;
+            padding-left: 20px;
+        }
 
-    .left-section p {
-      font-size: 48px;
-      margin: 0;
-    }
+        .nav-link {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+        }
 
-    /* Discover Section Styles */
-    .discover {
-      display: flex;
-      align-items: center;
-      margin-top: 100px;
-    }
+      
+      
+  
+          .actions {
+              display: flex;                   
+              gap: 20px;                      
+              margin-right: 20px;             
+              align-items: center;             
+          }
+  
+          .get-started {
+              background-color: #3A2323;      
+              color: white;                   
+              padding: 10px 25px;            
+              border-radius: 30px;           
+              text-decoration: none;           
+          }
+  
+          .sign-in {
+              color: black;                   
+              text-decoration: none;           
+              font-size: 18px;                 
+          }
+  
+          .discover {
+              display: flex;                  
+              align-items: center;            
+              margin-top: 100px;              
+          }
+  
+          .discover p {
+              font-size: 60px;               
+              margin: 0;                      
+          }
+  
+          .discover img {
+              width: 400px;                   
+              height: auto;                   
+              margin-left: 600px;              
+              margin-bottom: 10px;            
+          }
+  
+          .left-section {
+              position: absolute;              
+              top: 300px;                     
+              left: 260px;                     
+              display: flex;                  
+              flex-direction: column;         
+              gap: 10px;                      
+              text-align: left;               
+          }
+  
+          .left-section p {
+              font-size: 48px;                
+              margin: 0;                      
+          }
 
-    .discover p {
-      font-size: 60px;
-      margin: 0;
-    }
-
-    .discover img {
-      width: 400px;
-      height: auto;
-      margin-left: 600px;
-      margin-bottom: 10px;
-    }
-
-    /* Main Grid Layout */
-    main {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 20px;
-      padding: 20px;
-    }
-
-    main div {
-      background-color: #eee; /* Light gray background for testing */
-      height: 100px;
-    }
-  </style>
-
+        
+     
+       </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="spotting-dogs-3.html" class="nav-link" style="text-decoration: none; font-size: 18px;">
+                <!-- Using a Unicode arrow symbol for back -->
+                &#8592;
+</body>
+</html>
 
-  <header>
-    <nav>
-      <a href="spotting-dogs-3.html" class="nav-link" style="text-decoration: none; font-size: 18px;">
-        &#8592; Back
-      </a>
-    </nav>
-  </header>
 
-  <div class="left-section">
-    <p>Discover</p>
-    <p>in your</p>
-    <p>community</p>
-  </div>
+  
+      <div class="left-section">
+          <p>Discover</p>
+          <p>in your</p>
+          <p>community</p>
+      </div>
+  
+      <div class="left-section">
+        <p>Discover <strong>dogs</strong></p> 
+        <p>in your</p>
+        <p>community</p>
+    </div>
 
-  <div class="discover">
-    <img src="../images/dog.png" alt="Dog Image">
-  </div>
+  
+      <div class="discover">
+         <img src="../images/dog.png" alt="Dog Image">
+      </div>
+  </body>
+  </html>
 
-  <main class="main-grid">
+
+
+  
+</head>
+<main class="main-grid">
+
     <div class="div1"> </div>
     <div class="div2"> </div>
     <div class="div3"> </div>
@@ -120,7 +163,9 @@
     <div class="div5"> </div>
     <div class="div6"> </div>
     <div class="div7"> </div>
-  </main>
 
+</main>
+         
 </body>
 </html>
+
