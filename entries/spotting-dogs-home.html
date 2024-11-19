@@ -8,34 +8,28 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Inline CSS reset to avoid any unexpected styles -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/dog.png"> 
+
   <style>
-    /* Global reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Ensure the body takes up the full height of the viewport */
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background-color: #DFDACF;  /* Background color */
-      border: none; /* Ensure no borders on body or html */
-    }
-
-    /* Flexbox setup for body */
+    /* Body reset to prevent any unwanted margins or borders */
     body {
+      margin: 0;
+      padding: 0;
+      background-color: #DFDACF;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
       font-family: 'Helvetica', sans-serif;
+      height: 100vh;
     }
 
-    /* Reset navigation and sections */
+    /* Navigation Styles */
     nav {
       display: flex;
       gap: 20px;
@@ -48,6 +42,7 @@
       font-size: 18px;
     }
 
+    /* Left Section Styles */
     .left-section {
       position: absolute;
       top: 300px;
@@ -63,6 +58,7 @@
       margin: 0;
     }
 
+    /* Discover Section Styles */
     .discover {
       display: flex;
       align-items: center;
@@ -81,9 +77,8 @@
       margin-bottom: 10px;
     }
 
-    /* Reset styles for main element */
+    /* Main Grid Layout */
     main {
-      width: 100%;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 20px;
@@ -91,16 +86,17 @@
     }
 
     main div {
-      background-color: #eee;  /* Light gray background for testing */
-      height: 100px;  /* Just for visual reference */
+      background-color: #eee; /* Light gray background for testing */
+      height: 100px;
     }
-
   </style>
+
 </head>
 <body>
+
   <header>
     <nav>
-      <a href="spotting-dogs-3.html" class="nav-link">
+      <a href="spotting-dogs-3.html" class="nav-link" style="text-decoration: none; font-size: 18px;">
         &#8592; Back
       </a>
     </nav>
@@ -116,14 +112,15 @@
     <img src="../images/dog.png" alt="Dog Image">
   </div>
 
-  <main>
-    <div class="div1"></div>
-    <div class="div2"></div>
-    <div class="div3"></div>
-    <div class="div4"></div>
-    <div class="div5"></div>
-    <div class="div6"></div>
-    <div class="div7"></div>
+  <main class="main-grid">
+    <div class="div1"> </div>
+    <div class="div2"> </div>
+    <div class="div3"> </div>
+    <div class="div4"> </div>
+    <div class="div5"> </div>
+    <div class="div6"> </div>
+    <div class="div7"> </div>
   </main>
+
 </body>
 </html>
