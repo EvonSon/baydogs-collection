@@ -108,3 +108,59 @@
 </body>
 </html>
 
+
+<script>
+// Function to calculate the distance between two points using the Haversine formula
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the Earth in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // Distance in km
+    return distance;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the user's coordinates from sessionStorage
+    var userLat = parseFloat(sessionStorage.getItem('userLat'));
+    var userLng = parseFloat(sessionStorage.getItem('userLng'));
+
+    // Define the dog's coordinates (latitude, longitude) for each entry
+    const dogEntries = [
+        { name: '512 2nd Ave, New York, NY 10016', lat: 40.740735, lon: -73.984954, image: '../images/illustration1_1.png', link: 'entry-1.html' },
+        { name: '300w E 29th St, New York, NY 10001', lat: 40.744183, lon: -73.977296, image: '../images/illustration2.png', link: 'entry-2.html' },
+        { name: '506 2nd Ave, New York, NY 10016', lat: 40.739544, lon: -73.980467, image: '../images/illustration3.png', link: 'entry-3.html' },
+        { name: '490 2nd Ave, New York, NY 10016', lat: 40.738387, lon: -73.979998, image: '../images/illustration4.png', link: 'entry-4.html' },
+        { name: '300e E 29th St, New York, NY 10016', lat: 40.744338, lon: -73.979735, image: '../images/illustration5.png', link: 'entry-5.html' },
+        { name: '484 2nd Ave, New York, NY 10016', lat: 40.740148, lon: -73.978212, image: '../images/illustration6.png', link: 'entry-6.html' },
+        { name: '500 2nd Ave, New York, NY 10016', lat: 40.741251, lon: -73.981470, image: '../images/illustration7.png', link: 'entry-7.html' },
+        { name: '300 E 29th St, New York, NY 10016', lat: 40.742057, lon: -73.977472, image: '../images/illustration8.png', link: 'entry-8.html' },
+        { name: '309 E 26th St, New York, NY 10016', lat: 40.738009, lon: -73.979106, image: '../images/illustration9.png', link: 'entry-9.html' },
+        { name: '510 2nd Ave, New York, NY 10016', lat: 40.738750, lon: -73.981244, image: '../images/illustration10.png', link: 'entry-10.html' }
+    ];
+
+    // Sort dog entries by distance from the user's location
+    dogEntries.sort(function (a, b) {
+        const distA = calculateDistance(userLat, userLng, a.lat, a.lon);
+        const distB = calculateDistance(userLat, userLng, b.lat, b.lon);
+        return distA - distB; // Sort in ascending order of distance
+    });
+
+    // Dynamically populate the dog entries on the page
+    const entriesContainer = document.querySelector('.entries');
+    dogEntries.forEach(function(entry) {
+        const entryElement = document.createElement('div');
+        entryElement.classList.add('entry');
+        entryElement.innerHTML = `
+            <img src="${entry.image}" alt="Dog photo at ${entry.name}">
+            <a href="${entry.link}" target="_blank">${entry.name}</a>
+        `;
+        entriesContainer.appendChild(entryElement);
+    });
+});
+</script>
+
+
