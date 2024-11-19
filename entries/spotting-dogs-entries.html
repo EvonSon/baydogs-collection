@@ -1,68 +1,120 @@
-/* General body styling */
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #DFDACF;
-    font-family: 'Rammetto One', sans-serif;
-    letter-spacing: 1px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BayDogs Collection</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+            background-color: #DFDACF;
+            height: 100vh; 
+        }
+        .entries {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px; 
+            width: 90%;  
+            max-width: 1200px; 
+            padding: 20px; 
+        }
+        .entry {
+            background-color: #F8F3E7; 
+            border: 1px solid #47689B; 
+            border-radius: 8px; 
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            height: 300px; 
+            text-align: center;
+            font-family: 'Helvetica', sans-serif; 
+            color: black;
+            padding: 10px; 
+        }
+        .entry img {
+            max-width: 100%;  
+            height: auto; 
+            object-fit: contain; 
+            max-height: 100%;
+        }
+        .entry a {
+            margin-top: 10px; 
+            color: #47689B; 
+            text-decoration: none; 
+        }
+    </style>
+</head>
+<body>
+    <header style="position: absolute; top: 10px; left: 20px;">
+        <nav>
+            <a href="spotting-dogs-3.html" class="nav-link" style="text-decoration: none; font-size: 18px;"> &#8592; </a>
+        </nav>
+    </header>
+    
+    <div class="entries">
+        <!-- This container will be populated dynamically by JavaScript -->
+    </div>
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20px 0;
-    background-color: #F8F3E7;
-    position: relative;
-}
+    <script>
+        // Function to calculate the distance between two points using the Haversine formula
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Radius of the Earth in km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const distance = R * c; // Distance in km
+            return distance;
+        }
 
-nav {
-    display: flex;
-    gap: 20px;
-    padding-left: 20px;
-}
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the user's coordinates from sessionStorage
+            var userLat = parseFloat(sessionStorage.getItem('userLat'));
+            var userLng = parseFloat(sessionStorage.getItem('userLng'));
 
-.nav-link {
-    color: black;
-    text-decoration: none;
-    font-size: 18px;
-    font-family: 'Helvetica', sans-serif;
-    position: relative; /* Ensure the links are positioned relative to their container */
-    padding-left: 30px; /* Adjust padding so the text doesn't overlap with the image */
-}
+            // Define the dog's coordinates (latitude, longitude) for each entry
+            const dogEntries = [
+                { name: '512 2nd Ave, New York, NY 10016', lat: 40.740735, lon: -73.984954, image: '../images/illustration1_1.png', link: 'entry-1.html' },
+                { name: '300w E 29th St, New York, NY 10001', lat: 40.744183, lon: -73.977296, image: '../images/illustration2.png', link: 'entry-2.html' },
+                { name: '506 2nd Ave, New York, NY 10016', lat: 40.739544, lon: -73.980467, image: '../images/illustration3.png', link: 'entry-3.html' },
+                { name: '490 2nd Ave, New York, NY 10016', lat: 40.738387, lon: -73.979998, image: '../images/illustration4.png', link: 'entry-4.html' },
+                { name: '300e E 29th St, New York, NY 10016', lat: 40.744338, lon: -73.979735, image: '../images/illustration5.png', link: 'entry-5.html' },
+                { name: '484 2nd Ave, New York, NY 10016', lat: 40.740148, lon: -73.978212, image: '../images/illustration6.png', link: 'entry-6.html' },
+                { name: '500 2nd Ave, New York, NY 10016', lat: 40.741251, lon: -73.981470, image: '../images/illustration7.png', link: 'entry-7.html' },
+                { name: '300 E 29th St, New York, NY 10016', lat: 40.742057, lon: -73.977472, image: '../images/illustration8.png', link: 'entry-8.html' },
+                { name: '309 E 26th St, New York, NY 10016', lat: 40.738009, lon: -73.979106, image: '../images/illustration9.png', link: 'entry-9.html' },
+                { name: '510 2nd Ave, New York, NY 10016', lat: 40.738750, lon: -73.981244, image: '../images/illustration10.png', link: 'entry-10.html' }
+            ];
 
-.nav-link:nth-child(1) { /* About link */
-    background-image: url('images/paw1.png');
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-size: 20px 20px; /* Adjust the size of the paw image */
-}
+            // Sort dog entries by distance from the user's location
+            dogEntries.sort(function (a, b) {
+                const distA = calculateDistance(userLat, userLng, a.lat, a.lon);
+                const distB = calculateDistance(userLat, userLng, b.lat, b.lon);
+                return distA - distB; // Sort in ascending order of distance
+            });
 
-.nav-link:nth-child(2) { /* Explore link */
-    background-image: url('images/paw2.png');
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-}
+            // Dynamically populate the dog entries on the page
+            const entriesContainer = document.querySelector('.entries');
+            dogEntries.forEach(function(entry) {
+                const entryElement = document.createElement('div');
+                entryElement.classList.add('entry');
+                entryElement.innerHTML = `
+                    <img src="${entry.image}" alt="Dog photo at ${entry.name}">
+                    <a href="${entry.link}" target="_blank">${entry.name}</a>
+                `;
+                entriesContainer.appendChild(entryElement);
+            });
+        });
+    </script>
+</body>
+</html>
 
-.nav-link:nth-child(3) { /* Category link */
-    background-image: url('images/paw3.png');
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-}
 
-.baydogs {
-    font-family: 'Rammetto One', sans-serif;
-    font-size: 36px;
-    color: #47689B;
-    margin: 0;
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
