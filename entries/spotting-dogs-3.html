@@ -3,160 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Dogs Near You</title>
-
-    <!-- Link to Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    
-    <!-- Link to Leaflet JS -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-    <!-- Link to Google Fonts for Rammetto One -->
-    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
-
+    <title>BayDogs Collection</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* General body styling */
         body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh; /* Full viewport height */
-            background-color: #DFDACF;
-            font-family: 'Rammetto One', sans-serif; /* Default font for body, but overridden for nav-links */
-            letter-spacing: 1px;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 20px 0;
-            background-color: #F8F3E7;
-            position: relative;
-        }
-
-        nav {
-            display: flex;
-            gap: 20px;
-            padding-left: 20px;
-        }
-
-        .nav-link {
-            color: black;
-            text-decoration: none;
-            font-size: 18px;
-            font-family: 'Helvetica', sans-serif; /* Set Helvetica for nav links */
-        }
-        .baydogs {
-            font-family: 'Rammetto One', sans-serif; /* Reapply font style */
-            font-size: 36px;
-            color: #47689B;
-            margin: 0;
-            text-align: center;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        #map {
-            flex-grow: 1; /* Map takes up all remaining space */
-            width: 100%; /* Full width of the container */
-            height: calc(100vh - 200px); /* Adjust map height relative to header */
-        }
-
-        /* Input and button styling */
-        .form-container {
-            padding: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #F8F3E7;
+            flex-direction: column;
+            margin: 0;
+            background-color: #DFDACF;
+            height: 100vh; 
         }
-
-        input[type="text"] {
-            padding: 10px;
-            margin-right: 10px; 
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 250px;
+        .entries {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px; 
+            width: 90%;  
+            max-width: 1200px; 
+            padding: 20px; 
         }
-
-        button {
-            background-color: #4b2c20;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+        .entry {
+            background-color: #F8F3E7; 
+            border: 1px solid #47689B; 
+            border-radius: 8px; 
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            height: 300px; 
+            text-align: center;
+            font-family: 'Helvetica', sans-serif; 
+            color: black;
+            padding: 10px; 
+        }
+        .entry img {
+            max-width: 100%;  
+            height: auto; 
+            object-fit: contain; 
+            max-height: 100%;
+        }
+        .entry a {
+            margin-top: 10px; 
+            color: #47689B; 
+            text-decoration: none; 
         }
     </style>
 </head>
 <body>
-    <header>
+    <header style="position: absolute; top: 10px; left: 20px;">
         <nav>
-            <a href="spotting-dogs-home.html" class="nav-link">About</a>
-            <a href="spotting-dogs-4.html" class="nav-link">Explore KBC</a>
-            <a href="category.html" class="nav-link">Category</a>
+            <a href="spotting-dogs-3.html" class="nav-link" style="text-decoration: none; font-size: 18px;"> &#8592; </a>
         </nav>
-        <h1 class="baydogs">
-            <a href="../index.html" style="text-decoration: none; color: #47689B;">Baydogs</a>
-        </h1>
     </header>
-
-    <div class="form-container">
-        <input type="text" id="address" placeholder="Enter your address">
-        <button onclick="geocodeAddress()">See Dogs Near You</button>
+    
+    <div class="entries">
+        <!-- This container will be populated dynamically by JavaScript -->
     </div>
 
-    <div id="map"></div>
-
     <script>
-        // Initialize Leaflet map
-        var map = L.map('map').setView([40.7128, -74.0060], 13); // Default location (New York)
-
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // Function to geocode address and show on the map
-        function geocodeAddress() {
-            var address = document.getElementById('address').value;
-
-            // Use Nominatim (OpenStreetMap geocoding service)
-            var geocodeUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${address}`;
-
-            fetch(geocodeUrl)
-                .then(response => response.json())
-                .then(data => {
-                    if (data && data[0]) {
-                        var lat = data[0].lat;
-                        var lon = data[0].lon;
-
-                        // Set map view to the new coordinates
-                        map.setView(new L.LatLng(lat, lon), 13);
-
-                        // Add marker to the map
-                        L.marker([lat, lon]).addTo(map)
-                            .bindPopup('<b>You are here!</b>')
-                            .openPopup();
-
-                        // Store the user's coordinates in sessionStorage
-                        sessionStorage.setItem('userLat', lat);
-                        sessionStorage.setItem('userLon', lon);
-
-                        // Redirect to the dog entries page after a brief moment
-                        setTimeout(function() {
-                            window.location.href = 'spotting-dogs-entries.html';
-                        }, 2000);
-                    } else {
-                        alert("Could not find that address, try another one.");
-                    }
-                })
-                .catch(error => alert("Error: " + error));
+        // Function to calculate the distance between two points using the Haversine formula
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Radius of the Earth in km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const distance = R * c; // Distance in km
+            return distance;
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the user's coordinates from sessionStorage
+            var userLat = parseFloat(sessionStorage.getItem('userLat'));
+            var userLng = parseFloat(sessionStorage.getItem('userLng'));
+
+            // Define the dog's coordinates (latitude, longitude) for each entry
+            const dogEntries = [
+                { name: '512 2nd Ave, New York, NY 10016', lat: 40.740735, lon: -73.984954, image: '../images/illustration1_1.png', link: 'entry-1.html' },
+                { name: '300w E 29th St, New York, NY 10001', lat: 40.744183, lon: -73.977296, image: '../images/illustration2.png', link: 'entry-2.html' },
+                { name: '506 2nd Ave, New York, NY 10016', lat: 40.739544, lon: -73.980467, image: '../images/illustration3.png', link: 'entry-3.html' },
+                { name: '490 2nd Ave, New York, NY 10016', lat: 40.738387, lon: -73.979998, image: '../images/illustration4.png', link: 'entry-4.html' },
+                { name: '300e E 29th St, New York, NY 10016', lat: 40.744338, lon: -73.979735, image: '../images/illustration5.png', link: 'entry-5.html' },
+                { name: '484 2nd Ave, New York, NY 10016', lat: 40.740148, lon: -73.978212, image: '../images/illustration6.png', link: 'entry-6.html' },
+                { name: '500 2nd Ave, New York, NY 10016', lat: 40.741251, lon: -73.981470, image: '../images/illustration7.png', link: 'entry-7.html' },
+                { name: '300 E 29th St, New York, NY 10016', lat: 40.742057, lon: -73.977472, image: '../images/illustration8.png', link: 'entry-8.html' },
+                { name: '309 E 26th St, New York, NY 10016', lat: 40.738009, lon: -73.979106, image: '../images/illustration9.png', link: 'entry-9.html' },
+                { name: '510 2nd Ave, New York, NY 10016', lat: 40.738750, lon: -73.981244, image: '../images/illustration10.png', link: 'entry-10.html' }
+            ];
+
+            // Sort dog entries by distance from the user's location
+            dogEntries.sort(function (a, b) {
+                const distA = calculateDistance(userLat, userLng, a.lat, a.lon);
+                const distB = calculateDistance(userLat, userLng, b.lat, b.lon);
+                return distA - distB; // Sort in ascending order of distance
+            });
+
+            // Dynamically populate the dog entries on the page
+            const entriesContainer = document.querySelector('.entries');
+            dogEntries.forEach(function(entry) {
+                const entryElement = document.createElement('div');
+                entryElement.classList.add('entry');
+                entryElement.innerHTML = `
+                    <img src="${entry.image}" alt="Dog photo at ${entry.name}">
+                    <a href="${entry.link}" target="_blank">${entry.name}</a>
+                `;
+                entriesContainer.appendChild(entryElement);
+            });
+        });
     </script>
 </body>
 </html>
+
+
