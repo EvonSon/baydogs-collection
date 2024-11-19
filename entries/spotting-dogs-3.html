@@ -99,7 +99,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotting Dogs: Find Dogs Near You</title>
+    <title>Find Dogs Near You</title>
 
     <!-- Link to Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -108,10 +108,26 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <style>
-        /* Set the height for the map */
+        /* Body style to use flex layout */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Take up full screen height */
+        }
+
+        /* Styling for the map */
         #map {
-            height: 450px;
-            width: 100%;
+            height: 400px; /* Height of the map */
+            width: 100%;   /* Make the map span the full width */
+            margin-top: 20px; /* Add a bit of space above the map */
+            flex-grow: 1; /* Make the map take up the rest of the space */
+        }
+
+        /* Styling for the address input and button */
+        input, button {
+            margin: 10px;
         }
     </style>
 </head>
