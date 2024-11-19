@@ -3,101 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage | Baydogs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
-    <style>
-        body {
-            height: 100vh;
-            margin: 0;
-            background-color: #DFDACF;
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            font-family: 'Helvetica', sans-serif;
-            letter-spacing: 1px;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 20px 0;
-            background-color: #F8F3E7;
-            position: relative;
-        }
-        nav {
-            display: flex;
-            gap: 20px;
-            padding-left: 20px;
-        }
-        .nav-link {
-            color: black;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        .baydogs {
-            font-family: 'Rammetto One', sans-serif;
-            font-size: 36px;
-            color: #47689B;
-            margin: 0;
-            text-align: center;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center; 
-            align-items: center; 
-            flex: 1; 
-        }
-        .form-row {
-            display: flex;
-            align-items: center; 
-            justify-content: center; 
-            margin: 10px 0; 
-        }
-        input[type="text"] {
-            padding: 10px;
-            margin-right: 10px; 
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 250px; 
-        }
-        button {
-            background-color: #4b2c20;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .button-container {
-            margin-top: 50px; 
-        }
-    </style>
-</head>
-<body>
-
-    
-<header>
-    <nav>
-        <a href="spotting-dogs-home.html" class="nav-link">About</a>
-        <a href="spotting-dogs-4.html" class="nav-link">Explore KBC</a>
-        <a href="category.html" class="nav-link">Category</a>
-    </nav>
-    <h1 class="baydogs">
-        <a href="../index.html" style="text-decoration: none; color: #47689B;">Baydogs</a>
-    </h1>
-</header>
-    
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find Dogs Near You</title>
 
     <!-- Link to Leaflet CSS -->
@@ -107,40 +12,97 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <style>
-        /* Body style to use flex layout */
+        /* General body styling */
         body {
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
-            height: 100vh; /* Take up full screen height */
+            height: 100vh; /* Full viewport height */
+            background-color: #DFDACF;
+            font-family: 'Helvetica', sans-serif;
+            letter-spacing: 1px;
         }
 
-        /* Styling for the map */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 20px 0;
+            background-color: #F8F3E7;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            padding-left: 20px;
+        }
+
+        .nav-link {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .baydogs {
+            font-family: 'Rammetto One', sans-serif;
+            font-size: 36px;
+            color: #47689B;
+            margin: 0;
+            text-align: center;
+        }
+
         #map {
-            height: 100%; /* Fill the remaining height of the viewport */
-            width: 100%; /* Ensure the map fits within the viewport width */
-            flex-grow: 1; /* Let the map expand to fill available space */
-            margin: 0; /* Remove any margins around the map */
+            flex-grow: 1; /* Map takes up all remaining space */
+            width: 100%; /* Full width of the container */
         }
 
-        /* Styling for the address input and button */
-        input, button {
-            margin: 10px;
+        /* Input and button styling */
+        .form-container {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F8F3E7;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-right: 10px; 
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 250px;
+        }
+
+        button {
+            background-color: #4b2c20;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="spotting-dogs-home.html" class="nav-link">About</a>
+            <a href="spotting-dogs-4.html" class="nav-link">Explore KBC</a>
+            <a href="category.html" class="nav-link">Category</a>
+        </nav>
+        <h1 class="baydogs">
+            <a href="../index.html" style="text-decoration: none; color: #47689B;">Baydogs</a>
+        </h1>
+    </header>
 
-    <!-- Input box for the address -->
-    <input type="text" id="address" placeholder="Enter your address">
-    <button onclick="geocodeAddress()">See Dogs Near You</button>
+    <div class="form-container">
+        <input type="text" id="address" placeholder="Enter your address">
+        <button onclick="geocodeAddress()">See Dogs Near You</button>
+    </div>
 
-    <!-- The map will be shown here -->
     <div id="map"></div>
-
-     <!-- The map will be shown here -->
-    <div id="map" style="height: 450px; width: 100%; margin-top: 160px;"></div>
 
     <script>
         // Initialize Leaflet map
@@ -190,7 +152,4 @@
     </script>
 </body>
 </html>
-
-
-
 
