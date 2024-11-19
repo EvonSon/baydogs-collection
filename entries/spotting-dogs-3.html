@@ -118,15 +118,15 @@
 
         /* Styling for the map */
         #map {
-            height: calc(100vh - 80px); /* Adjust height dynamically to leave space for the margin-top */
+            height: 100%; /* Fill the remaining height of the viewport */
             width: 100%; /* Ensure the map fits within the viewport width */
             flex-grow: 1; /* Let the map expand to fill available space */
-            margin-top: 80px; /* Add space above the map */
+            margin: 0; /* Remove any margins around the map */
         }
 
         /* Styling for the address input and button */
         input, button {
-            margin: 20px;
+            margin: 10px;
         }
     </style>
 </head>
