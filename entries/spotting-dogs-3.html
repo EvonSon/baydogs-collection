@@ -113,3 +113,28 @@
 
 </body>
 </html>
+
+
+<script>
+    function geocodeAddress() {
+        var address = document.getElementById('address').value;
+        var geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode({ 'address': address }, function(results, status) {
+            if (status == 'OK') {
+                var userLat = results[0].geometry.location.lat();
+                var userLng = results[0].geometry.location.lng();
+                
+                // Store the user's coordinates in sessionStorage
+                sessionStorage.setItem('userLat', userLat);
+                sessionStorage.setItem('userLng', userLng);
+
+                // Redirect to the dog entries page
+                window.location.href = 'spotting-dogs-entries.html';
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+    }
+</script>
+
