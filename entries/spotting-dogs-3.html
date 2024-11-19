@@ -11,22 +11,27 @@
     <!-- Link to Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-    <!-- Link to Google Fonts for Rammetto One -->
+    <!-- Link to Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
 
     <style>
-        /* General body styling */
-        body {
+        /* Ensure the body and html take full height */
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh; /* Full viewport height */
-            background-color: #DFDACF;
-            font-family: 'Rammetto One', sans-serif;
-            letter-spacing: 1px;
         }
 
+        /* Body styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            font-family: 'Rammetto One', sans-serif;
+            background-color: #DFDACF;
+        }
+
+        /* Header styling */
         header {
             display: flex;
             justify-content: space-between;
@@ -34,7 +39,6 @@
             width: 100%;
             padding: 20px 0;
             background-color: #F8F3E7;
-            position: relative;
         }
 
         nav {
@@ -48,31 +52,6 @@
             text-decoration: none;
             font-size: 18px;
             font-family: 'Helvetica', sans-serif;
-            position: relative; /* Ensure the links are positioned relative to their container */
-            padding-left: 40px; /* Adjust padding so the text doesn't overlap with the image */
-            line-height: 40px; /* Vertically center the text */
-        }
-
-        /* Position paw images behind each link */
-        .nav-link:nth-child(1) { /* About link */
-            background-image: url('images/paw1.png');
-            background-position: left center;
-            background-repeat: no-repeat;
-            background-size: 30px 30px; /* Adjust the size of the paw image */
-        }
-
-        .nav-link:nth-child(2) { /* Explore link */
-            background-image: url('images/paw2.png');
-            background-position: left center;
-            background-repeat: no-repeat;
-            background-size: 30px 30px;
-        }
-
-        .nav-link:nth-child(3) { /* Category link */
-            background-image: url('images/paw3.png');
-            background-position: left center;
-            background-repeat: no-repeat;
-            background-size: 30px 30px;
         }
 
         .baydogs {
@@ -86,10 +65,10 @@
             transform: translateX(-50%);
         }
 
+        /* Map styling */
         #map {
-            flex-grow: 1; /* Map takes up all remaining space */
-            width: 100%; /* Full width of the container */
-            height: 50vh; /* Make map take up 50% of the viewport height */
+            width: 100%;
+            height: 50vh; /* Set the map height to 50% of the viewport */
         }
 
         /* Input and button styling */
