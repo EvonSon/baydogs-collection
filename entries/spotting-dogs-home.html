@@ -12,6 +12,13 @@
   <link rel="icon" type="image/png" href="images/dog.png">
   
   <style>
+    /* Reset any default margins or padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       height: 100vh;
       margin: 0;
@@ -87,6 +94,16 @@
     .left-section p {
       font-size: 48px;
       margin: 0;
+    }
+
+    /* Ensure there's no border or line in the page */
+    body, html {
+      border: none;
+    }
+
+    /* Ensure no unwanted space */
+    main {
+      flex-grow: 1;
     }
   </style>
 </head>
