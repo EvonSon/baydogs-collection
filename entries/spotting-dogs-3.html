@@ -100,66 +100,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotting Dogs 3</title>
-
-    <!-- Leaflet CSS -->
+    <!-- Leaflet CSS for the map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        /* Set the map size */
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-
     <h1>Spotting Dogs: Find Dogs Near You</h1>
     <input type="text" id="address" placeholder="Enter your address">
     <button onclick="geocodeAddress()">See Dogs Near You</button>
 
-    <div id="map" style="height: 400px; width: 100%;"></div>
+    <!-- Map container at the bottom -->
+    <div id="map"></div>
 
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
+        var map;
+
         function geocodeAddress() {
             var address = document.getElementById('address').value;
+            var geocoder = new google.maps.Geocoder();
 
-            // Encode address to pass to OpenStreetMap Nominatim API
-            var encodedAddress = encodeURIComponent(address);
-
-            // Fetch coordinates from Nominatim API (OpenStreetMap geocoder)
-            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodedAddress}`)
+            // Use Leaflet's geocoding service
+            fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + address)
                 .then(response => response.json())
                 .then(data => {
-                    if (data.length > 0) {
+                    if (data && data[0]) {
                         var userLat = data[0].lat;
                         var userLng = data[0].lon;
-
-                        // Store the user's coordinates in sessionStorage
+                        
+                        // Store coordinates in sessionStorage
                         sessionStorage.setItem('userLat', userLat);
                         sessionStorage.setItem('userLng', userLng);
 
-                        // Initialize the map and set view to the user's coordinates
-                        var map = L.map('map').setView([userLat, userLng], 13);
+                        // Initialize map with the user's location
+                        if (map) {
+                            map.remove();
+                        }
+                        map = L.map('map').setView([userLat, userLng], 13);
 
-                        // Add OpenStreetMap tiles
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         }).addTo(map);
 
-                        // Add a marker for the user's location
+                        // Add a marker at the user's location
                         L.marker([userLat, userLng]).addTo(map)
-                            .bindPopup("You are here!")
+                            .bindPopup("Your location")
                             .openPopup();
 
                         // Redirect to the dog entries page
                         window.location.href = 'spotting-dogs-entries.html';
                     } else {
-                        alert("Address not found. Please try again.");
+                        alert("Unable to geocode address.");
                     }
                 })
-                .catch(error => {
-                    alert("Error: " + error);
-                });
+                .catch(error => alert("Error: " + error));
         }
     </script>
 </body>
 </html>
-
-
 
