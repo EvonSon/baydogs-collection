@@ -99,9 +99,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotting Dogs 3</title>
+    <title>Spotting Dogs: Find Dogs Near You</title>
+
+    <!-- Link to Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+    <!-- Link to Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
     <style>
+        /* Set the height for the map */
         #map {
             height: 400px;
             width: 100%;
@@ -110,62 +117,62 @@
 </head>
 <body>
     <h1>Spotting Dogs: Find Dogs Near You</h1>
+
+    <!-- Input box for the address -->
     <input type="text" id="address" placeholder="Enter your address">
     <button onclick="geocodeAddress()">See Dogs Near You</button>
 
+    <!-- The map will be shown here -->
     <div id="map"></div>
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        var map;
+        // Initialize Leaflet map
+        var map = L.map('map').setView([40.7128, -74.0060], 13); // Default location (New York)
 
-        function initializeMap() {
-            // Initialize the map centered on a default location (for example, New York)
-            map = L.map('map').setView([40.7128, -74.0060], 13); // New York coordinates
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-        }
-
+        // Function to geocode address and show on the map
         function geocodeAddress() {
             var address = document.getElementById('address').value;
-            var geocoder = new L.Control.Geocoder.Nominatim();
 
-            geocoder.geocode(address, function(results) {
-                if (results && results.length > 0) {
-                    var userLat = results[0].center.lat;
-                    var userLng = results[0].center.lng;
+            // Use Nominatim (OpenStreetMap geocoding service)
+            var geocodeUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${address}`;
 
-                    // Store the user's coordinates in sessionStorage
-                    sessionStorage.setItem('userLat', userLat);
-                    sessionStorage.setItem('userLng', userLng);
+            fetch(geocodeUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data[0]) {
+                        var lat = data[0].lat;
+                        var lon = data[0].lon;
 
-                    // Set the map view to the user's address location
-                    map.setView([userLat, userLng], 13);
+                        // Set map view to the new coordinates
+                        map.setView(new L.LatLng(lat, lon), 13);
 
-                    // Add a marker for the user's location
-                    L.marker([userLat, userLng]).addTo(map)
-                        .bindPopup("You are here!")
-                        .openPopup();
+                        // Add marker to the map
+                        L.marker([lat, lon]).addTo(map)
+                            .bindPopup('<b>You are here!</b>')
+                            .openPopup();
 
-                    // Set a slight delay before redirecting to ensure everything is loaded
-                    setTimeout(function() {
-                        // Redirect to the dog entries page after a brief pause
-                        window.location.href = 'spotting-dogs-entries.html';
-                    }, 1000); // 1 second delay
-                } else {
-                    alert("Could not find the address. Please try again.");
-                }
-            });
-        }
+                        // Store the user's coordinates in sessionStorage
+                        sessionStorage.setItem('userLat', lat);
+                        sessionStorage.setItem('userLon', lon);
 
-        // Initialize the map on page load
-        window.onload = function() {
-            initializeMap();
+                        // Redirect to the dog entries page after a brief moment
+                        setTimeout(function() {
+                            window.location.href = 'spotting-dogs-entries.html';
+                        }, 2000);
+                    } else {
+                        alert("Could not find that address, try another one.");
+                    }
+                })
+                .catch(error => alert("Error: " + error));
         }
     </script>
 </body>
 </html>
+
 
 
