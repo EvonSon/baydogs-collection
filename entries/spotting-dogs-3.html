@@ -65,13 +65,13 @@
             transform: translateX(-50%);
         }
 
-        /* Form container styling (no extra background color here) */
+        /* Form container styling (moved down) */
         .form-container {
             padding: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            /* No extra background color */
+            margin-top: 40px; /* Added margin-top to create space between header and form */
         }
 
         input[type="text"] {
@@ -111,7 +111,7 @@
         </h1>
     </header>
 
-    <!-- Moved form-container below header, keeping the same background color -->
+    <!-- Moved form-container below header, with space above -->
     <div class="form-container">
         <input type="text" id="address" placeholder="Enter your address">
         <button onclick="geocodeAddress()">See Dogs Near You</button>
