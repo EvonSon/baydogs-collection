@@ -76,16 +76,15 @@
       transform: translateX(-50%);
     }
 
-    /* Paw-container */
+    /* Paw-container for a single row of paws */
     .paw-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
-      gap: 20px;
+      display: flex;
+      justify-content: space-around; /* Evenly distribute paws across the screen */
       position: absolute;
-      top: 50%; /* 50% from the top */
-      left: 50%; /* 50% from the left */
-      transform: translate(-50%, -50%); /* Adjust to truly center */
-      text-align: center;
+      top: 50%; /* Vertically centered */
+      left: 50%; /* Horizontally centered */
+      transform: translate(-50%, -50%); /* Adjust to center */
+      width: 100%; /* Take full width of the page */
     }
 
     /* Paw Styles with images as background */
@@ -101,19 +100,18 @@
       font-size: 16px;
       font-weight: bold;
       border-radius: 10px;
+      position: relative; /* To position text below each paw */
     }
 
-    /* The text placed below each paw image */
+    /* The text placed below each paw image with transparent background */
     .paw-text {
       position: absolute;
       bottom: -30px;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
       color: white;
       font-size: 14px;
       padding: 5px;
       text-align: center;
-      border-radius: 5px;
     }
   </style>
 </head>
