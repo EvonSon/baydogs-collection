@@ -152,13 +152,9 @@
                             .bindPopup('<b>You are here!</b>')
                             .openPopup();
 
-                        // Store the user's coordinates in sessionStorage
-                        sessionStorage.setItem('userLat', lat);
-                        sessionStorage.setItem('userLon', lon);
-
-                        // Redirect to the dog entries page after a brief moment
+                        // Redirect to the dog entries page with lat and lon as query parameters
                         setTimeout(function() {
-                            window.location.href = 'spotting-dogs-entries.html';
+                            window.location.href = `spotting-dogs-entries.html?lat=${lat}&lon=${lon}`;
                         }, 2000);
                     } else {
                         alert("Could not find that address, try another one.");
