@@ -78,15 +78,14 @@
 
     /* Paw-container */
     .paw-container {
-      display: flex;
-      justify-content: center; /* Center the paw items horizontally */
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
       gap: 20px;
       position: absolute;
       top: 50%; /* 50% from the top */
       left: 50%; /* 50% from the left */
       transform: translate(-50%, -50%); /* Adjust to truly center */
-      flex-wrap: wrap;
+      text-align: center;
     }
 
     /* Paw Styles with images as background */
@@ -100,20 +99,21 @@
       align-items: center;
       color: white;
       font-size: 16px;
-      text-align: center;
       font-weight: bold;
       border-radius: 10px;
-      position: relative; /* To position text over the image */
     }
 
-    /* The text placed over the paw images */
+    /* The text placed below each paw image */
     .paw-text {
       position: absolute;
+      bottom: -30px;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
       color: white;
-      font-size: 16px;
-      font-weight: bold;
+      font-size: 14px;
+      padding: 5px;
       text-align: center;
-      z-index: 1;
+      border-radius: 5px;
     }
   </style>
 </head>
