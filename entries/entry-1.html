@@ -10,7 +10,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Helvetica', sans-serif;
             background-color: #f9f4e8;
             display: flex;
             justify-content: center;
@@ -41,16 +41,31 @@
         }
 
         .map-link {
+            font-family: 'Rammetto One', sans-serif; /* Apply Rammetto One only to the address */
             display: inline-block;
             margin-top: 10px;
             text-decoration: none;
-            color: #47689B; /* Set the color for the address */
+            color: #47689B;
             font-weight: bold;
         }
 
-        /* Apply Rammetto One font to text inside the container */
-        .container p, .container button {
-            font-family: 'Rammetto One', sans-serif;
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            font-family: 'Helvetica', sans-serif; /* Ensure buttons stay Helvetica */
+            font-size: 14px;
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ddd;
+            cursor: pointer;
+        }
+
+        .buttons button:hover {
+            background-color: #bbb;
         }
     </style>
 </head>
@@ -65,8 +80,11 @@
 
     <div class="container">
         <div>
+            <!-- Address with Rammetto One font -->
             <p>
-                <a href="https://www.google.com/maps?q=512+2nd+Ave,+New+York,+NY+10016" target="_blank" class="map-link">512 2nd Ave, New York, NY 10016</a>
+                <a href="https://www.google.com/maps?q=512+2nd+Ave,+New+York,+NY+10016" target="_blank" class="map-link">
+                    512 2nd Ave, New York, NY 10016
+                </a>
             </p>
         </div>
 
