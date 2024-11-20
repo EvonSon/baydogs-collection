@@ -79,18 +79,18 @@
     /* Paw-container for a single row of paws */
     .paw-container {
       display: flex;
-      justify-content: space-around; /* Evenly distribute paws across the screen */
+      justify-content: space-evenly; /* Evenly distribute paws across the screen */
       position: absolute;
       top: 50%; /* Vertically centered */
       left: 50%; /* Horizontally centered */
       transform: translate(-50%, -50%); /* Adjust to center */
-      width: 100%; /* Take full width of the page */
+      width: 80%; /* Adjusted width to bring paws closer */
     }
 
     /* Paw Styles with images as background */
     .paw {
-      width: 120px;
-      height: 120px;
+      width: 100px; /* Reduced width of each paw */
+      height: 100px; /* Reduced height */
       background-size: cover;
       background-position: center;
       display: flex;
@@ -112,6 +112,7 @@
       font-size: 14px;
       padding: 5px;
       text-align: center;
+      background-color: transparent; /* Transparent background */
     }
   </style>
 </head>
