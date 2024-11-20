@@ -67,16 +67,19 @@
       font-size: 18px;                 
     }
 
+    /* Section containing text on left */
     .discover {
       display: flex;                  
-      align-items: center;            
-      margin-top: 100px;              
-      justify-content: flex-start;   /* Ensure text doesn't touch image */
+      align-items: flex-start;        /* Align text to top of container */
+      margin-top: 50px;               
+      justify-content: flex-start;   /* Ensure text stays on left side */
+      width: 100%;
     }
 
     .discover p {
-      font-size: 48px;               /* Reduced font size */
+      font-size: 24px;               /* Smaller font size */
       margin: 0;                      
+      width: 50%;                    /* Limit width of text so it doesn't touch image */
     }
 
     .discover img {
@@ -88,16 +91,17 @@
 
     .left-section {
       position: absolute;              
-      top: 300px;                     
-      left: 40px;                     /* Adjusted to ensure space from left edge */
+      top: 250px;                     
+      left: 40px;                     /* Adjust text to left side */
       display: flex;                  
       flex-direction: column;         
       gap: 10px;                      
       text-align: left;               
+      width: 50%;                     /* Limit width to half of the screen */
     }
 
     .left-section p {
-      font-size: 36px;                /* Reduced font size */
+      font-size: 24px;                /* Smaller font size */
       margin: 0;                      
     }
 
@@ -120,6 +124,7 @@
   </div>
 
   <div class="discover">
+    <p></p> <!-- Empty paragraph to align text on left -->
     <img src="../images/dog.png" alt="Dog Image">
   </div>
 </body>
