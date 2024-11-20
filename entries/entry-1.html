@@ -29,32 +29,15 @@
             margin: auto;
         }
 
-        .content-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
-        }
-
         .image-box {
-            width: 48%; /* Adjust for layout */
+            width: 100%;
+            max-width: 500px;
+            height: auto;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: 20px 0;
             border-radius: 10px;
-        }
-
-        .map-box {
-            width: 48%; /* Adjust for layout */
-            height: 250px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
         }
 
         .map-link {
@@ -65,6 +48,7 @@
             font-weight: bold;
         }
 
+        /* Apply Rammetto One font to text inside the container */
         .container p, .container button {
             font-family: 'Rammetto One', sans-serif;
         }
@@ -86,18 +70,9 @@
             </p>
         </div>
 
-        <!-- New content row for image and map -->
-        <div class="content-row">
-            <div class="image-box">
-                <img src="../images/entry1.png" alt="Description of the image" class="image-placeholder" style="max-width: 100%; height: auto;">
-            </div>
-            <div class="map-box">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.2218943797745!2d-73.9800645!3d40.7423292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2590912c9c1d5%3A0x74be4b608f3aa35e!2sKips%20Bay%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1698527903572!5m2!1sen!2sus" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
+        <!-- Centered image -->
+        <div class="image-box">
+            <img src="../images/entry1.png" alt="Description of the image" class="image-placeholder" style="max-width: 100%; height: auto;">
         </div>
 
         <div class="buttons">
