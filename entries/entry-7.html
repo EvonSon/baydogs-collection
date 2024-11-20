@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dog Info Page</title>
+    <!-- Link to Google Fonts for Rammetto One -->
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Helvetica', sans-serif;
             background-color: #f9f4e8;
             display: flex;
             justify-content: center;
@@ -28,7 +30,6 @@
         }
 
         .image-box {
-            background-color: #d3d3d3;
             width: 100%;
             max-width: 500px;
             height: auto;
@@ -37,28 +38,34 @@
             align-items: center;
             margin: 20px 0;
             border-radius: 10px;
-            position: relative;
-        }
-
-        .map-box {
-            width: 100%;
-            max-width: 600px;
-            height: 400px; /* Set a fixed height for the map */
-            margin-top: 30px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
         }
 
         .map-link {
+            font-family: 'Rammetto One', sans-serif; /* Apply Rammetto One only to the address */
             display: inline-block;
             margin-top: 10px;
             text-decoration: none;
-            color: #007bff; /* Bootstrap primary color for links */
+            color: #47689B;
             font-weight: bold;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            font-family: 'Helvetica', sans-serif; /* Ensure buttons stay Helvetica */
+            font-size: 14px;
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ddd;
+            cursor: pointer;
+        }
+
+        .buttons button:hover {
+            background-color: #bbb;
         }
     </style>
 </head>
@@ -71,31 +78,28 @@
         </nav>
     </header>
 
-  <div class="container">
-        <div class="image-box">
-        <img src="../images/entry7.png" alt="Description of the image" class="image-placeholder" style="max-width: 100%; height: auto;">
+    <div class="container">
+        <div>
+            <!-- Address with Rammetto One font -->
+            <p>
+                <a href="https://www.google.com/maps?q=500+2nd+Ave,+New+York,+NY+10016" target="_blank" class="map-link">
+                    500 2nd Ave, New York, NY 10016
+                </a>
+            </p>
         </div>
 
-        <div class="buttons">
+        <!-- Centered image -->
+        <div class="image-box">
+            <img src="../images/entry7.png" alt="Description of the image" class="image-placeholder" style="max-width: 100%; height: auto;">
+        </div>
+
+         <div class="buttons">
             <button>Italian Greyhound </button>
             <button>Slim</button>
             <button>Color</button>
             <button>Coat type</button>
             <button>Personality</button>
         </div>
-
-        <div class="map-box">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.2218943797745!2d-73.9800645!3d40.7423292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2590912c9c1d5%3A0x74be4b608f3aa35e!2sKips%20Bay%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1698527903572!5m2!1sen!2sus" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
-            <p>
-                <a href="https://www.google.com/maps/place/Kips+Bay,+New+York,+NY/@40.740646,-73.9833739,16z/data=!3m1!4b1!4m6!3m5!1s0x89c2590912c9c1d5:0x74be4b608f3aa35e!8m2!3d40.7423292!4d-73.9800645!16zL20vMDNoYnN0?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-link">500 2nd Ave, New York, NY 10016</a>
-            </p>
-        </div>
     </div>
 </body>
 </html>
-
-
