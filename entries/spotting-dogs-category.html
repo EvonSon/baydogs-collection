@@ -89,11 +89,12 @@
       flex-wrap: wrap;
     }
 
+    /* Paw Styles with images as background */
     .paw {
       width: 120px;
       height: 120px;
-      background-color: #47689B;
-      clip-path: polygon(50% 0%, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0% 50%, 35% 35%);
+      background-size: cover;
+      background-position: center;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -102,6 +103,17 @@
       text-align: center;
       font-weight: bold;
       border-radius: 10px;
+      position: relative; /* To position text over the image */
+    }
+
+    /* The text placed over the paw images */
+    .paw-text {
+      position: absolute;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      z-index: 1;
     }
   </style>
 </head>
@@ -116,13 +128,23 @@
     <h1 class="baydogs">Baydogs</h1>
   </header>
 
-  <!-- Paw shapes, centered horizontally and vertically -->
+  <!-- Paw shapes with images as background and text in front -->
   <div class="paw-container">
-    <div class="paw">Breed</div>
-    <div class="paw">Size</div>
-    <div class="paw">Color</div>
-    <div class="paw">Coat Type</div>
-    <div class="paw">Personality</div>
+    <div class="paw" style="background-image: url('images/paw1.png');">
+      <div class="paw-text">Breed</div>
+    </div>
+    <div class="paw" style="background-image: url('images/paw2.png');">
+      <div class="paw-text">Size</div>
+    </div>
+    <div class="paw" style="background-image: url('images/paw3.png');">
+      <div class="paw-text">Color</div>
+    </div>
+    <div class="paw" style="background-image: url('images/paw4.png');">
+      <div class="paw-text">Coat Type</div>
+    </div>
+    <div class="paw" style="background-image: url('images/paw5.png');">
+      <div class="paw-text">Personality</div>
+    </div>
   </div>
 
 </body>
